@@ -1,4 +1,4 @@
-import 'server-only';
+
 import type { Locale } from '@/i18n-config';
 
 // Definimos un tipo para la estructura esperada del diccionario

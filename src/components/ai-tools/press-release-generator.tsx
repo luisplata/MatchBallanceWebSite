@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-// Importamos el TIPO, pero la función se llamará vía API
-import type { GeneratePressReleaseInput } from '@/ai/flows/generate-press-release';
+import { generatePressRelease, type GeneratePressReleaseInput, type GeneratePressReleaseOutput } from '@/ai/flows/generate-press-release';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -41,22 +40,13 @@ export default function PressReleaseGenerator() {
         updateDetails: data.updateDetails,
       };
       
-      const response = await fetch('/api/generate-press-release', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
+      // Llamada directa al flujo de Genkit
+      const result: GeneratePressReleaseOutput = await generatePressRelease(input);
 
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-
-      const result = await response.json();
-      if (result.error) {
-        throw new Error(result.error);
-      }
+      // Asumiendo que el flujo no lanza errores propios que necesiten manejo especial aquí
+      // y que el formato de `result` es directamente lo que necesitamos.
+      // Si el flujo puede devolver un objeto con una propiedad `error` como antes lo hacía la API,
+      // se necesitaría ajustar esta lógica. Por ahora, se asume que devuelve el output o lanza una excepción.
 
       setGeneratedPressRelease(result.pressRelease);
       toast({
@@ -67,7 +57,7 @@ export default function PressReleaseGenerator() {
       console.error("Error generating press release:", error);
       toast({
         title: "Error",
-        description: `No se pudo generar el comunicado de prensa. ${error instanceof Error ? error.message : ''}`,
+        description: `No se pudo generar el comunicado de prensa. ${error instanceof Error ? error.message : 'Error desconocido. Revisa la consola para más detalles.'}`,
         variant: "destructive",
       });
     } finally {
