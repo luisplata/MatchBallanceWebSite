@@ -2,10 +2,8 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // Habilita la exportación estática
-  i18n: { 
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
-  },
+  // La configuración i18n integrada de Next.js se elimina porque no es compatible con 'output: export'.
+  // La internacionalización se manejará a través de la estructura de carpetas [locale] y getStaticPaths/Props.
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -23,7 +21,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Se elimina la configuración experimental de serverActions ya que los flujos de Genkit se accederán vía API routes
 };
 
 export default nextConfig;

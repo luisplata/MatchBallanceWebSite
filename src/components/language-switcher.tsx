@@ -1,8 +1,8 @@
-'use client' // Esta directiva no es necesaria en Pages Router para componentes que usan hooks de router
+'use client' 
 
-import { useRouter } from 'next/router' // Cambiado de next/navigation a next/router
+import { useRouter } from 'next/router'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { type Locale, i18n } from '@/i18n-config'
+import { type Locale } from '@/i18n-config' // No necesitamos i18n completo aquí
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -15,14 +15,21 @@ interface LanguageSwitcherProps {
 
 export default function LanguageSwitcher({ currentLocale, dictionary }: LanguageSwitcherProps) {
   const router = useRouter();
-  // En Pages Router, router.pathname es la ruta sin el locale (e.g., /news/[id])
-  // router.asPath es la ruta completa con el locale (e.g., /en/news/my-post)
 
   const handleChange = (newLocale: Locale) => {
-    // router.push(pathname, asPath, { locale })
-    // pathname: la ruta de la página en el sistema de archivos (e.g., /news/[id])
-    // asPath: la ruta que se muestra en el navegador (e.g., /es/news/my-post)
-    router.push(router.pathname, router.asPath, { locale: newLocale });
+    const currentPath = router.asPath; // e.g., /es/noticias/un-id o /en/foro
+
+    // Eliminar el prefijo del idioma actual del path
+    let basePath = currentPath;
+    if (currentPath.startsWith(`/${currentLocale}`)) {
+      basePath = currentPath.substring(`/${currentLocale}`.length);
+    }
+    // Si basePath está vacío (porque estábamos en la raíz del idioma, ej: /es), asegurar que sea "/"
+    if (basePath === '') {
+      basePath = '/';
+    }
+    
+    router.push(`/${newLocale}${basePath}`);
   };
 
   return (
