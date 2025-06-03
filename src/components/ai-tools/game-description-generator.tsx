@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generateGameDescription, type GenerateGameDescriptionInput } from '@/ai/flows/generate-game-description';
+// Importamos el TIPO, pero la función se llamará vía API
+import type { GenerateGameDescriptionInput } from '@/ai/flows/generate-game-description';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -39,7 +40,23 @@ export default function GameDescriptionGenerator() {
     setIsLoading(true);
     setGeneratedDescription(null);
     try {
-      const result = await generateGameDescription(data as GenerateGameDescriptionInput);
+      const response = await fetch('/api/generate-game-description', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result.error) {
+        throw new Error(result.error);
+      }
+
       setGeneratedDescription(result.description);
       toast({
         title: "¡Descripción Generada!",
@@ -49,7 +66,7 @@ export default function GameDescriptionGenerator() {
       console.error("Error generating game description:", error);
       toast({
         title: "Error",
-        description: "No se pudo generar la descripción del juego. Inténtalo de nuevo.",
+        description: `No se pudo generar la descripción del juego. ${error instanceof Error ? error.message : ''}`,
         variant: "destructive",
       });
     } finally {

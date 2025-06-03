@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generatePressRelease, type GeneratePressReleaseInput } from '@/ai/flows/generate-press-release';
+// Importamos el TIPO, pero la función se llamará vía API
+import type { GeneratePressReleaseInput } from '@/ai/flows/generate-press-release';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -39,7 +40,24 @@ export default function PressReleaseGenerator() {
         gameName: 'Match Ballance', // Fixed game name
         updateDetails: data.updateDetails,
       };
-      const result = await generatePressRelease(input);
+      
+      const response = await fetch('/api/generate-press-release', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result.error) {
+        throw new Error(result.error);
+      }
+
       setGeneratedPressRelease(result.pressRelease);
       toast({
         title: "¡Comunicado Generado!",
@@ -49,7 +67,7 @@ export default function PressReleaseGenerator() {
       console.error("Error generating press release:", error);
       toast({
         title: "Error",
-        description: "No se pudo generar el comunicado de prensa. Inténtalo de nuevo.",
+        description: `No se pudo generar el comunicado de prensa. ${error instanceof Error ? error.message : ''}`,
         variant: "destructive",
       });
     } finally {

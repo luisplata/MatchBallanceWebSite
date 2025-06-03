@@ -1,3 +1,4 @@
+
 {
   "siteTitle": "Dynamic Balance",
   "siteDescription": "Official website for the game 'Match Ballance'",
@@ -27,6 +28,14 @@
     "title": "News and Updates",
     "subtitle": "Stay up to date with the latest news, events, and announcements about Match Ballance.",
     "readMore": "Read More"
+  },
+  "newsPageContent": {
+    "newsItem1Title": "Match Ballance Grand Update!",
+    "newsItem1Summary": "Discover the new levels, power-ups, and challenges we've added in the latest version of Match Ballance. The fun never ends!",
+    "newsItem2Title": "Community Tournament: Show Your Skill!",
+    "newsItem2Summary": "Participate in our first community tournament and win incredible prizes. Sign up now and get ready for the competition.",
+    "newsItem3Title": "Meet the Team Behind Match Ballance",
+    "newsItem3Summary": "An exclusive interview with the developers of Dynamic Balance. Discover the inspiration and creative process of the game."
   },
   "newsDetailPage": {
     "titlePlaceholder": "News Detail",

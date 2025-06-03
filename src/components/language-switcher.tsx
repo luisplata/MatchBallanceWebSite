@@ -1,6 +1,6 @@
-'use client'
+'use client' // Esta directiva no es necesaria en Pages Router para componentes que usan hooks de router
 
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/router' // Cambiado de next/navigation a next/router
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { type Locale, i18n } from '@/i18n-config'
 
@@ -15,35 +15,14 @@ interface LanguageSwitcherProps {
 
 export default function LanguageSwitcher({ currentLocale, dictionary }: LanguageSwitcherProps) {
   const router = useRouter();
-  const pathname = usePathname();
+  // En Pages Router, router.pathname es la ruta sin el locale (e.g., /news/[id])
+  // router.asPath es la ruta completa con el locale (e.g., /en/news/my-post)
 
   const handleChange = (newLocale: Locale) => {
-    if (!pathname) return;
-
-    // Construct the new path
-    let newPath;
-    const isDefaultLocale = newLocale === i18n.defaultLocale;
-    
-    // Remove current locale prefix if it exists
-    let pathWithoutLocale = pathname;
-    if (pathname.startsWith(`/${currentLocale}`)) {
-      pathWithoutLocale = pathname.substring(`/${currentLocale}`.length);
-      if (pathWithoutLocale === '') pathWithoutLocale = '/'; // case /en -> /
-    }
-
-    if (isDefaultLocale) {
-      newPath = pathWithoutLocale;
-    } else {
-      // Ensure pathWithoutLocale starts with a slash if it's not just the root
-      newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
-    }
-    
-    // Ensure root path is just "/" for default locale, or "/<locale>" for others
-    if (newPath === '') newPath = '/';
-    if (!isDefaultLocale && newPath === `/${newLocale}/`) newPath = `/${newLocale}`;
-
-
-    router.push(newPath);
+    // router.push(pathname, asPath, { locale })
+    // pathname: la ruta de la página en el sistema de archivos (e.g., /news/[id])
+    // asPath: la ruta que se muestra en el navegador (e.g., /es/news/my-post)
+    router.push(router.pathname, router.asPath, { locale: newLocale });
   };
 
   return (

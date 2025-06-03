@@ -4,98 +4,99 @@
 
 @layer base {
   :root {
-    --background: 300 35% 20%; /* Dark Purple */
-    --foreground: 300 15% 88%; /* Pale Lavender */
+    --background: 300 35% 9%; /* Morado oscuro para fondo */
+    --foreground: 300 15% 90%; /* Lavanda pálido para texto principal */
 
-    --card: 300 35% 25%; /* Slightly lighter Dark Purple for cards */
-    --card-foreground: 300 15% 88%; /* Pale Lavender */
+    --card: 300 35% 12%; /* Morado un poco más claro para tarjetas */
+    --card-foreground: 300 15% 90%; /* Mismo texto lavanda pálido */
 
-    --popover: 300 35% 23%; /* Similar to card */
-    --popover-foreground: 300 15% 88%; /* Pale Lavender */
+    --popover: 300 35% 11%; /* Similar a card */
+    --popover-foreground: 300 15% 90%;
 
-    --primary: 81 87% 60%; /* Lime Green */
-    --primary-foreground: 81 25% 15%; /* Dark Green */
+    --primary: 81 87% 60%; /* Verde lima vibrante como primario (#B0F247) */
+    --primary-foreground: 81 25% 15%; /* Verde oscuro para texto sobre primario */
+    
+    --secondary: 300 50% 45%; /* Morado medio como secundario */
+    --secondary-foreground: 300 15% 92%; /* Texto claro sobre secundario */
 
-    --secondary: 81 60% 40%; /* Muted Lime Green */
-    --secondary-foreground: 0 0% 98%; /* White */
+    --muted: 300 30% 20%; /* Morado oscuro apagado para muted */
+    --muted-foreground: 300 15% 65%; /* Texto lavanda más apagado */
 
-    --muted: 300 30% 30%; /* Muted Dark Purple */
-    --muted-foreground: 300 15% 70%; /* Lighter muted purple text */
+    --accent: 300 80% 65%;  /* Morado vibrante como acento (#800080) - más claro que el fondo */
+    --accent-foreground: 300 15% 95%; /* Texto muy claro sobre acento morado */
+    
+    --destructive: 0 70% 50%; /* Rojo vibrante para destructivo */
+    --destructive-foreground: 0 0% 98%; /* Blanco */
 
-    --accent: 300 80% 65%; /* Bright Purple */
-    --accent-foreground: 0 0% 10%; /* Dark text on Bright Purple */
+    --border: 300 30% 25%; /* Borde morado sutil */
+    --input: 300 30% 18%; /* Fondo de input morado oscuro */
+    --ring: 81 87% 65%; /* Verde lima para el anillo de foco (similar al primario) */
 
-    --destructive: 0 70% 50%; /* Vibrant Red */
-    --destructive-foreground: 0 0% 98%; /* White */
-
-    --border: 300 30% 35%; /* Subtle purple border */
-    --input: 300 30% 32%; /* Input field background */
-    --ring: 81 87% 60%; /* Lime Green for ring */
-
-    --chart-1: 81 87% 60%;   /* Lime Green (Primary) */
-    --chart-2: 300 80% 65%;  /* Bright Purple (Accent) */
-    --chart-3: 210 70% 60%;  /* Bright Blue */
-    --chart-4: 45 90% 55%;   /* Bright Orange/Yellow */
+    --chart-1: 81 87% 60%;   /* Verde lima (Primario) */
+    --chart-2: 300 80% 65%;  /* Morado vibrante (Acento) */
+    --chart-3: 210 70% 60%;  /* Azul brillante */
+    --chart-4: 45 90% 55%;   /* Naranja/Amarillo brillante */
     --chart-5: 150 60% 50%;  /* Teal */
 
     --radius: 0.5rem;
 
-    /* Sidebar colors based on new main theme */
-    --sidebar-background: 300 35% 18%; /* Slightly darker purple for sidebar bg */
-    --sidebar-foreground: 300 15% 85%; /* Sidebar text */
-    --sidebar-primary: 81 87% 60%; /* Lime Green - sidebar primary actions */
-    --sidebar-primary-foreground: 81 25% 15%; /* Text on sidebar primary */
-    --sidebar-accent: 300 80% 65%; /* Bright Purple - sidebar accent */
-    --sidebar-accent-foreground: 0 0% 10%; /* Text on sidebar accent */
-    --sidebar-border: 300 30% 30%; /* Sidebar border */
-    --sidebar-ring: 81 87% 60%; /* Lime Green - sidebar focus ring */
+    /* Colores de Sidebar basados en el nuevo tema principal */
+    --sidebar-background: 300 35% 8%; /* Morado aún más oscuro para fondo de sidebar */
+    --sidebar-foreground: 300 15% 88%; /* Texto de Sidebar */
+    --sidebar-primary: 81 87% 60%; /* Verde lima - acciones primarias en sidebar */
+    --sidebar-primary-foreground: 81 25% 15%; /* Texto sobre primario de sidebar */
+    --sidebar-accent: 300 80% 65%; /* Morado vibrante - acento en sidebar */
+    --sidebar-accent-foreground: 300 15% 95%; /* Texto sobre acento de sidebar */
+    --sidebar-border: 300 30% 22%; /* Borde de sidebar */
+    --sidebar-ring: 81 87% 65%; /* Verde lima - anillo de foco en sidebar */
   }
 
   .dark {
-    /* Dark theme remains, can be further adjusted if needed */
-    --background: 300 15% 10%; /* Dark Purple */
-    --foreground: 240 60% 92%; /* Light Lavender */
+    /* El tema oscuro usará los mismos valores que el tema claro por ahora,
+       ya que el tema claro ya es oscuro. Se pueden ajustar si se necesita un tema oscuro aún más oscuro. */
+    --background: 300 35% 9%; 
+    --foreground: 300 15% 90%;
 
-    --card: 300 15% 12%;
-    --card-foreground: 240 60% 92%;
+    --card: 300 35% 12%;
+    --card-foreground: 300 15% 90%;
 
-    --popover: 300 15% 12%;
-    --popover-foreground: 240 60% 92%;
+    --popover: 300 35% 11%;
+    --popover-foreground: 300 15% 90%;
 
-    --primary: 300 80% 60%; /* Lighter Vibrant Purple */
-    --primary-foreground: 300 15% 10%; /* Dark Purple text */
+    --primary: 81 87% 60%; 
+    --primary-foreground: 81 25% 15%;
+    
+    --secondary: 300 50% 45%; 
+    --secondary-foreground: 300 15% 92%;
 
-    --secondary: 300 40% 40%; /* Muted Dark Purple */
-    --secondary-foreground: 240 60% 92%;
+    --muted: 300 30% 20%;
+    --muted-foreground: 300 15% 65%;
 
-    --muted: 300 15% 20%;
-    --muted-foreground: 240 30% 70%;
-
-    --accent: 81 75% 55%; /* Slightly desaturated Lime Green for dark mode */
-    --accent-foreground: 81 80% 10%; /* Very Dark Green */
-
-    --destructive: 0 63% 45%;
+    --accent: 300 80% 65%;
+    --accent-foreground: 300 15% 95%;
+    
+    --destructive: 0 63% 45%; /* Un poco más oscuro para tema dark */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 300 15% 25%;
-    --input: 300 15% 22%;
-    --ring: 300 80% 60%; /* Primary color for ring */
+    --border: 300 30% 25%;
+    --input: 300 30% 18%;
+    --ring: 81 87% 65%;
 
-    --chart-1: 300 70% 50%;
-    --chart-2: 81 60% 45%;
-    --chart-3: 240 30% 35%;
-    --chart-4: 300 70% 70%;
-    --chart-5: 81 80% 70%;
+    --chart-1: 81 80% 55%; /* Ajuste para dark mode */
+    --chart-2: 300 75% 60%;
+    --chart-3: 210 65% 55%;
+    --chart-4: 45 85% 50%;
+    --chart-5: 150 55% 45%;
 
-    /* Dark Sidebar colors */
-    --sidebar-background: 300 15% 12%;
-    --sidebar-foreground: 240 60% 92%;
-    --sidebar-primary: 300 80% 60%;
-    --sidebar-primary-foreground: 300 15% 10%;
-    --sidebar-accent: 81 75% 55%;
-    --sidebar-accent-foreground: 81 80% 10%;
-    --sidebar-border: 300 15% 25%;
-    --sidebar-ring: 300 80% 60%;
+    /* Colores de Sidebar para Dark Mode (iguales que light por ahora) */
+    --sidebar-background: 300 35% 8%;
+    --sidebar-foreground: 300 15% 88%;
+    --sidebar-primary: 81 87% 60%;
+    --sidebar-primary-foreground: 81 25% 15%;
+    --sidebar-accent: 300 80% 65%;
+    --sidebar-accent-foreground: 300 15% 95%;
+    --sidebar-border: 300 30% 22%;
+    --sidebar-ring: 81 87% 65%;
   }
 }
 
