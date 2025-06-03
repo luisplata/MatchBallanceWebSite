@@ -1,5 +1,7 @@
 import NewsCard from '@/components/news-card';
 import Container from '@/components/container';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/i18n-config';
 
 // Placeholder data for news items
 const newsItems = [
@@ -29,13 +31,16 @@ const newsItems = [
   },
 ];
 
-export default function NoticiasPage() {
+export default async function NoticiasPage({ params: { locale } }: { params: { locale: Locale } }) {
+  const dict = await getDictionary(locale);
+  const newsPageDict = dict.newsPage;
+
   return (
-    <Container>
+    <Container className="py-12 md:py-16">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-headline font-bold text-primary sm:text-5xl">Noticias y Actualizaciones</h1>
+        <h1 className="text-4xl font-headline font-bold text-primary sm:text-5xl">{newsPageDict.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Mantente al día con las últimas novedades, eventos y anuncios sobre Match Ballance.
+          {newsPageDict.subtitle}
         </p>
       </div>
       
@@ -48,7 +53,9 @@ export default function NoticiasPage() {
             summary={item.summary}
             imageUrl={item.imageUrl}
             imageAiHint={item.imageAiHint}
-            link={`/noticias/${item.id}`} // Placeholder link to a detailed news page
+            link={`/noticias/${item.id}`} // Link will be relative to current locale
+            locale={locale}
+            readMoreText={newsPageDict.readMore}
           />
         ))}
       </div>

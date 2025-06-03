@@ -17,5 +17,23 @@
     "label": "Language:",
     "es": "Español",
     "en": "English"
+  },
+  "forumPage": {
+    "title": "Community Forum",
+    "subtitle": "Our community forum is on its way! Soon you'll be able to join discussions, share your experiences, get help, and connect with other Match Ballance players.",
+    "infoText": "In the meantime, you can find us on our social media."
+  },
+  "newsPage": {
+    "title": "News and Updates",
+    "subtitle": "Stay up to date with the latest news, events, and announcements about Match Ballance.",
+    "readMore": "Read More"
+  },
+  "newsDetailPage": {
+    "titlePlaceholder": "News Detail",
+    "comingSoon": "The detailed content for this news item will be available soon. Please check back later!"
+  },
+  "pressPage": {
+    "title": "AI Press Tools",
+    "subtitle": "Use artificial intelligence to generate game descriptions and press releases for 'Match Ballance'."
   }
 }
