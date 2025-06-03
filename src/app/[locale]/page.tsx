@@ -6,28 +6,35 @@ import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { getDictionary } from '@/lib/dictionaries';
+import type { Locale } from '@/i18n-config';
 
-export default function Home() {
+export default async function Home({ params: { locale } }: { params: { locale: Locale } }) {
+  const dict = await getDictionary(locale);
+  const homeDict = dict.homePage;
+
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-background to-background">
         <Container className="text-center">
           <h1 className="text-4xl font-headline font-bold tracking-tight text-primary sm:text-5xl md:text-6xl lg:text-7xl">
-            Equilibrio Dinámico
+            {homeDict.title}
           </h1>
           <p className="mt-6 text-lg leading-8 text-foreground/80 sm:text-xl md:max-w-2xl mx-auto">
-            ¡Bienvenido al vibrante mundo de <span className="font-bold text-primary">Match Ballance</span>! Prepárate para una experiencia de juego adictiva donde tu precisión y estrategia se ponen a prueba.
+            {homeDict.subtitle.split('Match Ballance')[0]}
+            <span className="font-bold text-primary">Match Ballance</span>
+            {homeDict.subtitle.split('Match Ballance')[1]}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg transform transition-transform hover:scale-105">
               <Link href="#descargas">
-                Descargar Ahora
+                {homeDict.downloadButton}
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="shadow-md transform transition-transform hover:scale-105">
               <Link href="#showcase">
-                Ver Gameplay <ArrowRight className="ml-2 h-5 w-5" />
+                {homeDict.gameplayButton} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>

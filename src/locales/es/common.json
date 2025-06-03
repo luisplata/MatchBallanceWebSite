@@ -1,0 +1,21 @@
+{
+  "siteTitle": "Equilibrio Dinámico",
+  "siteDescription": "Sitio oficial del juego 'Match Ballance'",
+  "nav": {
+    "home": "Inicio",
+    "news": "Noticias",
+    "forum": "Foro",
+    "press": "Prensa IA"
+  },
+  "homePage": {
+    "title": "Equilibrio Dinámico",
+    "subtitle": "¡Bienvenido al vibrante mundo de Match Ballance! Prepárate para una experiencia de juego adictiva donde tu precisión y estrategia se ponen a prueba.",
+    "downloadButton": "Descargar Ahora",
+    "gameplayButton": "Ver Gameplay"
+  },
+  "languageSelector": {
+    "label": "Idioma:",
+    "es": "Español",
+    "en": "English"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "siteTitle": "Dynamic Balance",
+  "siteDescription": "Official website for the game 'Match Ballance'",
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "forum": "Forum",
+    "press": "Press AI"
+  },
+  "homePage": {
+    "title": "Dynamic Balance",
+    "subtitle": "Welcome to the vibrant world of Match Ballance! Get ready for an addictive gaming experience where your precision and strategy are put to the test.",
+    "downloadButton": "Download Now",
+    "gameplayButton": "Watch Gameplay"
+  },
+  "languageSelector": {
+    "label": "Language:",
+    "es": "Español",
+    "en": "English"
+  }
+}
