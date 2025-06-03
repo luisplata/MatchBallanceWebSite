@@ -2,11 +2,10 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // Habilita la exportación estática
-  i18n: {
+  /* i18n: { // Esta configuración no es compatible con output: 'export'
     locales: ['es', 'en'],
     defaultLocale: 'es',
-  },
-  /* config options here */
+  }, */
   typescript: {
     ignoreBuildErrors: true,
   },
