@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { PlayCircle } from 'lucide-react';
 
 export default function GameShowcase() {
   const screenshots = [
@@ -10,18 +9,22 @@ export default function GameShowcase() {
     { src: "https://placehold.co/600x400.png", alt: "Captura de pantalla 4 del juego Match Ballance", "data-ai-hint": "gameplay action" },
   ];
 
+  const soundCloudEmbedUrl = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/bellseboss/00-presentacion&color=%23B0F247&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+
   return (
     <div className="space-y-8">
       <Card className="overflow-hidden shadow-xl transform transition-all hover:scale-[1.02] duration-300">
         <CardContent className="p-0">
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center relative group cursor-pointer" data-ai-hint="gameplay video">
-            <PlayCircle className="h-24 w-24 text-primary opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 z-10" />
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300"></div>
-            <p className="absolute bottom-4 left-4 text-primary-foreground font-semibold bg-primary/80 px-3 py-1 rounded-md z-10">
-              Ver Trailer del Juego
-            </p>
-             <Image src="https://placehold.co/1280x720.png" alt="Video placeholder" layout="fill" objectFit="cover" className="opacity-50" data-ai-hint="gameplay video" />
-          </div>
+          <iframe
+            width="100%"
+            height="300"
+            scrolling="no"
+            frameBorder="no"
+            allow="autoplay"
+            src={soundCloudEmbedUrl}
+            title="Presentación Match Ballance SoundCloud"
+            data-ai-hint="audio presentation"
+          ></iframe>
         </CardContent>
       </Card>
 
