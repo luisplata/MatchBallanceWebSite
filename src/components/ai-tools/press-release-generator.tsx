@@ -1,10 +1,11 @@
+
 'use client';
 
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generatePressRelease, type GeneratePressReleaseInput, type GeneratePressReleaseOutput } from '@/ai/flows/generate-press-release';
+// Comentado: import { generatePressRelease, type GeneratePressReleaseInput, type GeneratePressReleaseOutput } from '@/ai/flows/generate-press-release';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -18,6 +19,17 @@ const formSchema = z.object({
 });
 
 type PressReleaseFormValues = z.infer<typeof formSchema>;
+
+// Si estas definiciones de tipo causan problemas por no encontrar el flujo,
+// se pueden definir localmente de forma simplificada si solo se usan para el estado.
+// interface GeneratePressReleaseInput {
+//   gameName: string;
+//   updateDetails: string;
+// }
+// interface GeneratePressReleaseOutput {
+//   pressRelease: string;
+// }
+
 
 export default function PressReleaseGenerator() {
   const [generatedPressRelease, setGeneratedPressRelease] = useState<string | null>(null);
@@ -34,42 +46,50 @@ export default function PressReleaseGenerator() {
   const onSubmit: SubmitHandler<PressReleaseFormValues> = async (data) => {
     setIsLoading(true);
     setGeneratedPressRelease(null);
-    try {
-      const input: GeneratePressReleaseInput = {
-        gameName: 'Match Ballance', // Fixed game name
-        updateDetails: data.updateDetails,
-      };
-      
-      // Llamada directa al flujo de Genkit
-      const result: GeneratePressReleaseOutput = await generatePressRelease(input);
 
-      // Asumiendo que el flujo no lanza errores propios que necesiten manejo especial aquí
-      // y que el formato de `result` es directamente lo que necesitamos.
-      // Si el flujo puede devolver un objeto con una propiedad `error` como antes lo hacía la API,
-      // se necesitaría ajustar esta lógica. Por ahora, se asume que devuelve el output o lanza una excepción.
-
-      setGeneratedPressRelease(result.pressRelease);
+    // Simular carga y mostrar mensaje de funcionalidad no disponible
+    // ya que las llamadas directas a flujos Genkit no son viables en 'output: export' sin un backend.
+    setTimeout(() => {
       toast({
-        title: "¡Comunicado Generado!",
-        description: "El comunicado de prensa se ha generado exitosamente.",
+        title: "Funcionalidad no disponible",
+        description: "La generación de comunicados mediante IA no está disponible en el modo de exportación estática.",
+        variant: "destructive",
       });
+      setIsLoading(false);
+    }, 1000);
+    
+    // La llamada real a Genkit se omite para compatibilidad con 'output: export'
+    /*
+    try {
+      // const input: GeneratePressReleaseInput = {
+      //   gameName: 'Match Ballance', 
+      //   updateDetails: data.updateDetails,
+      // };
+      // const result: GeneratePressReleaseOutput = await generatePressRelease(input);
+      // setGeneratedPressRelease(result.pressRelease);
+      // toast({
+      //   title: "¡Comunicado Generado!",
+      //   description: "El comunicado de prensa se ha generado exitosamente.",
+      // });
+      throw new Error("La generación de comunicados mediante IA no está disponible en el modo de exportación estática.");
     } catch (error) {
       console.error("Error generating press release:", error);
       toast({
         title: "Error",
-        description: `No se pudo generar el comunicado de prensa. ${error instanceof Error ? error.message : 'Error desconocido. Revisa la consola para más detalles.'}`,
+        description: `No se pudo generar el comunicado de prensa. ${error instanceof Error ? error.message : 'Error desconocido.'}`,
         variant: "destructive",
       });
     } finally {
       setIsLoading(false);
     }
+    */
   };
 
   return (
     <Card className="w-full shadow-xl">
       <CardHeader>
         <CardTitle className="font-headline text-2xl text-primary">Generador de Comunicados de Prensa</CardTitle>
-        <CardDescription>Crea comunicados de prensa joviales para 'Match Ballance' sobre las últimas novedades y actualizaciones.</CardDescription>
+        <CardDescription>Crea comunicados de prensa joviales para 'Match Ballance' sobre las últimas novedades y actualizaciones. (Funcionalidad IA desactivada en modo estático)</CardDescription>
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -97,7 +117,7 @@ export default function PressReleaseGenerator() {
           <CardFooter className="flex justify-end">
              <Button type="submit" disabled={isLoading} className="bg-primary hover:bg-primary/90">
               {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-              {isLoading ? 'Generando...' : 'Generar Comunicado'}
+              {isLoading ? 'Procesando...' : 'Generar Comunicado'}
             </Button>
           </CardFooter>
         </form>

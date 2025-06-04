@@ -1,10 +1,11 @@
+
 'use client';
 
 import { useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generateGameDescription, type GenerateGameDescriptionInput, type GenerateGameDescriptionOutput } from '@/ai/flows/generate-game-description';
+// Comentado: import { generateGameDescription, type GenerateGameDescriptionInput, type GenerateGameDescriptionOutput } from '@/ai/flows/generate-game-description';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -20,6 +21,18 @@ const formSchema = z.object({
 });
 
 type GameDescriptionFormValues = z.infer<typeof formSchema>;
+
+// Si estas definiciones de tipo causan problemas por no encontrar el flujo,
+// se pueden definir localmente de forma simplificada si solo se usan para el estado.
+// interface GenerateGameDescriptionInput {
+//   aspect: string;
+//   tone: string;
+//   wordLimit: number;
+// }
+// interface GenerateGameDescriptionOutput {
+//   description: string;
+// }
+
 
 export default function GameDescriptionGenerator() {
   const [generatedDescription, setGeneratedDescription] = useState<string | null>(null);
@@ -38,37 +51,46 @@ export default function GameDescriptionGenerator() {
   const onSubmit: SubmitHandler<GameDescriptionFormValues> = async (data) => {
     setIsLoading(true);
     setGeneratedDescription(null);
-    try {
-      // Llamada directa al flujo de Genkit
-      const result: GenerateGameDescriptionOutput = await generateGameDescription(data);
-      
-      // Asumiendo que el flujo no lanza errores propios que necesiten manejo especial aquí
-      // y que el formato de `result` es directamente lo que necesitamos.
-      // Si el flujo puede devolver un objeto con una propiedad `error` como antes lo hacía la API,
-      // se necesitaría ajustar esta lógica. Por ahora, se asume que devuelve el output o lanza una excepción.
-
-      setGeneratedDescription(result.description);
+    
+    // Simular carga y mostrar mensaje de funcionalidad no disponible
+    // ya que las llamadas directas a flujos Genkit no son viables en 'output: export' sin un backend.
+    setTimeout(() => {
       toast({
-        title: "¡Descripción Generada!",
-        description: "La descripción del juego se ha generado exitosamente.",
+        title: "Funcionalidad no disponible",
+        description: "La generación de descripciones mediante IA no está disponible en el modo de exportación estática.",
+        variant: "destructive",
       });
+      setIsLoading(false);
+    }, 1000);
+
+    // La llamada real a Genkit se omite para compatibilidad con 'output: export'
+    /*
+    try {
+      // const result: GenerateGameDescriptionOutput = await generateGameDescription(data);
+      // setGeneratedDescription(result.description);
+      // toast({
+      //   title: "¡Descripción Generada!",
+      //   description: "La descripción del juego se ha generado exitosamente.",
+      // });
+      throw new Error("La generación de descripciones mediante IA no está disponible en el modo de exportación estática.");
     } catch (error) {
       console.error("Error generating game description:", error);
       toast({
         title: "Error",
-        description: `No se pudo generar la descripción del juego. ${error instanceof Error ? error.message : 'Error desconocido. Revisa la consola para más detalles.'}`,
+        description: `No se pudo generar la descripción del juego. ${error instanceof Error ? error.message : 'Error desconocido.'}`,
         variant: "destructive",
       });
     } finally {
       setIsLoading(false);
     }
+    */
   };
 
   return (
     <Card className="w-full shadow-xl">
       <CardHeader>
         <CardTitle className="font-headline text-2xl text-primary">Generador de Descripción del Juego</CardTitle>
-        <CardDescription>Crea descripciones atractivas para 'Match Ballance' especificando el aspecto, tono y límite de palabras.</CardDescription>
+        <CardDescription>Crea descripciones atractivas para 'Match Ballance' especificando el aspecto, tono y límite de palabras. (Funcionalidad IA desactivada en modo estático)</CardDescription>
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -116,7 +138,7 @@ export default function GameDescriptionGenerator() {
           <CardFooter className="flex justify-end">
             <Button type="submit" disabled={isLoading} className="bg-primary hover:bg-primary/90">
               {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-              {isLoading ? 'Generando...' : 'Generar Descripción'}
+              {isLoading ? 'Procesando...' : 'Generar Descripción'}
             </Button>
           </CardFooter>
         </form>
