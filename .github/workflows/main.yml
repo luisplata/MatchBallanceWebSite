@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main # Or your default branch
+  workflow_dispatch: # Allow manual deployment runs
 
 jobs:
   build-and-deploy:
@@ -12,25 +13,34 @@ jobs:
       contents: write # Add this line to grant write permissions
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: main # Or your default branch
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Use v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4 # Use v4
         with:
-          node-version: '18' # Or your preferred Node.js version
+          node-version: "18" # Or your preferred Node.js version
+          cache: 'npm' # Cache npm dependencies
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci # Use ci for cleaner installs in CI
 
-      - name: Build
+      - name: 📄 Crear archivo .env desde los secretos
+        run: |
+          echo "REPO_NAME=MatchBallanceWebSite" >> .env
+
+      - name: Build Next.js app for static export
         run: npm run build # Replace with your build command
+        env:
+          NODE_ENV: 'production'
+
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll # Prevents GitHub Pages from ignoring files starting with underscores
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Add this line to use the GITHUB_TOKEN
-          publish_dir: ./out # Replace with your build output directory
-          publish_branch: gh-pages
+          folder: out # The folder the action should deploy (output of the export)
+          branch: gh-pages # Deploy to the gh-pages branch
+          token: ${{ secrets.GITHUB_TOKEN }} # Use the default GITHUB_TOKEN for authentication
+          clean: true # Automatically remove deleted files from the deploy branch

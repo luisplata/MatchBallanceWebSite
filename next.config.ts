@@ -1,28 +1,36 @@
-import type {NextConfig} from 'next';
 
-const nextConfig: NextConfig = {
-  output: 'export', // Habilita la exportación estática
-  // La configuración i18n integrada de Next.js se elimina porque no es compatible con 'output: export'
-  // cuando no se usa la estructura de carpetas [locale] de la forma en que estaba antes o si causa conflictos.
-  // La internacionalización (si se reintroduce) se manejaría de otra manera o se eliminaría por completo
-  // como es el caso ahora.
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+const path = require('path');
+
+/** @type {import('next').NextConfig} */
+const isGithub = process.env.REPO_NAME && process.env.REPO_NAME !== '';
+const basePath = isGithub ? `/${process.env.REPO_NAME}` : ''; // Calculate basePath once
+
+const isProd = process.env.NODE_ENV === 'production';
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  basePath: basePath, // si REPO_NAME está vacío, no pone basePath
+  assetPrefix: isGithub ? `${basePath}/` : '', // lo mismo para los assets
+  trailingSlash: true, // Ensures /page loads /page/index.html, good for static hosts
   images: {
-    unoptimized: true, // Necesario para 'output: export' si no se usa un loader personalizado
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    unoptimized: true, // Required for next export
   },
+  // Optional: Disable React Strict Mode if it causes issues, but generally keep it enabled
+  // reactStrictMode: false,
+
+  // Ensure experimental features that might interfere with 'export' are disabled if not needed
+  // experimental: {
+  //   appDir: false, // Explicitly ensure appDir is false if migrating from App Router
+  // },
+
+  // Set environment variable for client-side access to basePath
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
+
+  // Removed i18n configuration as it's incompatible with 'output: export'
+  // i18n: { ... }
 };
 
-export default nextConfig;
+module.exports = nextConfig;
