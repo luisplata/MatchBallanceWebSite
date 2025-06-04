@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+// LanguageSwitcher ya no se usa y se puede eliminar si no hay otros usos
 
 interface NavItemLink {
   href: string;
@@ -15,16 +16,17 @@ interface HeaderProps {
     home: string;
     news: string;
     forum: string;
-    press: string;
+    // press ya no está aquí
   };
+  currentLocale: string; // El locale actual, aunque ahora solo será 'es'
 }
 
-export default function Header({ navDictionary }: HeaderProps) {
+export default function Header({ navDictionary, currentLocale }: HeaderProps) {
   const navItems: NavItemLink[] = [
     { href: '/', label: navDictionary.home },
     { href: '/noticias', label: navDictionary.news },
     { href: '/foro', label: navDictionary.forum },
-    { href: '/prensa', label: navDictionary.press },
+    // El item de prensa ha sido eliminado
   ];
 
   return (
@@ -48,7 +50,7 @@ export default function Header({ navDictionary }: HeaderProps) {
         </nav>
 
         <div className="flex flex-1 items-center justify-end space-x-2 md:space-x-4">
-          {/* LanguageSwitcher removido */}
+          {/* LanguageSwitcher ya no es necesario aquí */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
