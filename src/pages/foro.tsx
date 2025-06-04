@@ -4,7 +4,7 @@ import { MessageSquare } from 'lucide-react';
 import Head from 'next/head';
 
 // Textos estáticos
-const siteTitle = "Equilibrio Dinámico";
+const siteTitle = "Match Ballance";
 const forumDict = {
   title: "Foro de la Comunidad",
   subtitle: "¡Nuestro foro comunitario está en camino! Pronto podrás unirte a discusiones, compartir tus experiencias, obtener ayuda y conectar con otros jugadores de Match Ballance.",

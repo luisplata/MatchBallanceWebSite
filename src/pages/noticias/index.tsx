@@ -4,7 +4,7 @@ import Head from 'next/head';
 import type { GetStaticProps } from 'next';
 
 // Textos estáticos
-const siteTitle = "Equilibrio Dinámico";
+const siteTitle = "Match Ballance";
 const newsPageDict = {
   title: "Noticias y Actualizaciones",
   subtitle: "Mantente al día con las últimas novedades, eventos y anuncios sobre Match Ballance."
@@ -32,7 +32,7 @@ const newsItemsData = [
     id: '3',
     title: "Conoce al Equipo Detrás de Match Ballance",
     date: '2024-06-20',
-    summary: "Una entrevista exclusiva con los desarrolladores de Equilibrio Dinámico. Descubre la inspiración y el proceso creativo del juego.",
+    summary: "Una entrevista exclusiva con los desarrolladores de Match Ballance. Descubre la inspiración y el proceso creativo del juego.",
     imageUrl: 'https://placehold.co/600x400.png',
     imageAiHint: 'developer team'
   },

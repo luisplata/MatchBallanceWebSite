@@ -9,10 +9,10 @@ import { ArrowRight } from 'lucide-react';
 import Head from 'next/head';
 
 // Textos estáticos (antes del diccionario)
-const siteTitle = "Equilibrio Dinámico";
+const siteTitle = "Match Ballance";
 const siteDescription = "Sitio oficial del juego 'Match Ballance'";
 const homeDict = {
-  title: "Equilibrio Dinámico",
+  title: "Match Ballance",
   subtitle: "¡Bienvenido al vibrante mundo de Match Ballance! Prepárate para una experiencia de juego adictiva donde tu precisión y estrategia se ponen a prueba.",
   downloadButton: "Descargar Ahora",
   gameplayButton: "Ver Gameplay"

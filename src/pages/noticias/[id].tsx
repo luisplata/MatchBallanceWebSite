@@ -6,7 +6,7 @@ import type { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 
 // Textos estáticos
-const siteTitle = "Equilibrio Dinámico";
+const siteTitle = "Match Ballance";
 const newsDetailDict = {
   titlePlaceholder: "Detalle de la Noticia",
   comingSoon: "El contenido detallado de esta noticia estará disponible pronto. ¡Vuelve a consultarlo más tarde!"
