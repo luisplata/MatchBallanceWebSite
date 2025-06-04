@@ -3,22 +3,34 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Or the branch you use for your source code
+      - main # Or your default branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # This is the crucial line to add
+      contents: write # Add this line to grant write permissions
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: main # Or your default branch
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Or your Node.js version
+          node-version: '18' # Or your preferred Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build # Replace with your build command
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Add this line to use the GITHUB_TOKEN
+          publish_dir: ./out # Replace with your build output directory
+          publish_branch: gh-pages
