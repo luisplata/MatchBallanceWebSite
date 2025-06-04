@@ -28,5 +28,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out # Or your build output directory
-          cname: your-domain.com # Optional: Uncomment and replace with your custom domain
+          publish_dir: ./out
