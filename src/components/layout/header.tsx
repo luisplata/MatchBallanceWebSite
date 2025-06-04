@@ -10,15 +10,14 @@ interface NavItemLink {
   icon?: LucideIcon;
 }
 
-interface HeaderProps {
-  navDictionary: {
-    home: string;
-    news: string;
-    forum: string;
-  };
-}
+// Definición de textos estáticos para el Header (actualizada)
+const navDictionary = {
+  home: "Inicio",
+  news: "Noticias",
+  forum: "Foro",
+};
 
-export default function Header({ navDictionary }: HeaderProps) {
+export default function Header() {
   const navItems: NavItemLink[] = [
     { href: '/', label: navDictionary.home },
     { href: '/noticias', label: navDictionary.news },
@@ -27,7 +26,7 @@ export default function Header({ navDictionary }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center">
+      <div className="container mx-auto flex h-16 max-w-5xl items-center px-4 sm:px-6 lg:px-8">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="m12 22 V 12"/></svg>
           <span className="font-bold font-headline text-lg">Match Ballance</span>
