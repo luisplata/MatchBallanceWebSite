@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Header navDictionary={navDictionary} currentLocale={currentLocale} />
+      <Header navDictionary={navDictionary} />
       <main className="flex-grow">
         <Component {...pageProps} />
       </main>
