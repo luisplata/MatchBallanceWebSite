@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, ArrowRight } from 'lucide-react';
-import type { Locale } from '@/i18n-config';
 
 interface NewsCardProps {
   title: string;
@@ -12,11 +11,12 @@ interface NewsCardProps {
   imageUrl: string;
   imageAiHint: string;
   link: string;
-  locale: Locale;
-  readMoreText: string;
 }
 
-export default function NewsCard({ title, date, summary, imageUrl, imageAiHint, link, locale, readMoreText }: NewsCardProps) {
+export default function NewsCard({ title, date, summary, imageUrl, imageAiHint, link }: NewsCardProps) {
+  const readMoreText = "Leer Más"; // Texto estático
+  const currentLocale = 'es'; // Locale estático para formato de fecha
+
   return (
     <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
       <CardHeader className="p-0">
@@ -36,7 +36,7 @@ export default function NewsCard({ title, date, summary, imageUrl, imageAiHint, 
         </CardTitle>
         <div className="flex items-center text-sm text-muted-foreground">
           <CalendarDays className="mr-2 h-4 w-4" />
-          <span>{new Date(date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span>{new Date(date).toLocaleDateString(currentLocale, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
         <p className="text-foreground/80 leading-relaxed">
           {summary}

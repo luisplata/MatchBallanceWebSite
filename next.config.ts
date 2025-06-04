@@ -2,8 +2,10 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // Habilita la exportación estática
-  // La configuración i18n integrada de Next.js se elimina porque no es compatible con 'output: export'.
-  // La internacionalización se manejará a través de la estructura de carpetas [locale] y getStaticPaths/Props.
+  // La configuración i18n integrada de Next.js se elimina porque no es compatible con 'output: export'
+  // cuando no se usa la estructura de carpetas [locale] de la forma en que estaba antes o si causa conflictos.
+  // La internacionalización (si se reintroduce) se manejaría de otra manera o se eliminaría por completo
+  // como es el caso ahora.
   typescript: {
     ignoreBuildErrors: true,
   },

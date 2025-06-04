@@ -2,21 +2,16 @@ import Container from '@/components/container';
 import GameDescriptionGenerator from '@/components/ai-tools/game-description-generator';
 import PressReleaseGenerator from '@/components/ai-tools/press-release-generator';
 import { BotMessageSquare } from 'lucide-react';
-import { getDictionary } from '@/lib/dictionaries';
-import type { Locale } from '@/i18n-config';
-import { i18n } from '@/i18n-config';
-import type { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 
-interface PrensaPageProps {
-  locale: Locale;
-  dictionary: Awaited<ReturnType<typeof getDictionary>>;
-}
+// Textos estáticos
+const siteTitle = "Equilibrio Dinámico";
+const pressPageDict = {
+  title: "Herramientas de Prensa IA",
+  subtitle: "Utiliza la inteligencia artificial para generar descripciones de juego y comunicados de prensa para 'Match Ballance'."
+};
 
-export default function PrensaPage({ dictionary }: PrensaPageProps) {
-  const pressPageDict = dictionary.pressPage;
-  const siteTitle = dictionary.siteTitle;
-
+export default function PrensaPage() {
   return (
     <>
       <Head>
@@ -40,20 +35,4 @@ export default function PrensaPage({ dictionary }: PrensaPageProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps<PrensaPageProps, { locale: Locale }> = async ({ params }) => {
-  const locale = params?.locale || i18n.defaultLocale;
-  const dictionary = await getDictionary(locale);
-  return {
-    props: {
-      locale,
-      dictionary,
-    },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: i18n.locales.map((locale) => ({ params: { locale } })),
-    fallback: false,
-  };
-};
+// No getStaticProps o getStaticPaths necesarios
