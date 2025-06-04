@@ -19,7 +19,7 @@ export default function DownloadButtons() {
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
       <Button
         size="lg"
-        className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg transform transition-transform hover:scale-105 animate-subtle-bounce"
+        className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform transition-transform hover:scale-105 animate-subtle-bounce"
         style={{animationDelay: '0s'}}
         onClick={handleAppStoreClick}
         aria-label="Próximamente en App Store"
@@ -33,7 +33,7 @@ export default function DownloadButtons() {
       <Button
         asChild
         size="lg"
-        className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg transform transition-transform hover:scale-105 animate-subtle-bounce"
+        className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform transition-transform hover:scale-105 animate-subtle-bounce"
         style={{animationDelay: '0.2s'}}
       >
         <a href="https://play.google.com/store/apps/dev?id=6489594376691621400" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play">
@@ -47,3 +47,4 @@ export default function DownloadButtons() {
     </div>
   );
 }
+
