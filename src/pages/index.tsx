@@ -19,7 +19,7 @@ export default function HomePage() {
         <div className="relative flex-grow flex flex-col p-4 md:p-8">
 
           {/* Top Left: Studio Label */}
-          <div className="absolute top-4 left-4 md:top-8 md:left-8 z-10">
+          <div className="absolute top-8 left-4 md:top-12 md:left-8 z-10">
             <Image
               src="/images/Label.png" 
               alt="MatchBallance Studios"
@@ -66,3 +66,4 @@ export default function HomePage() {
     </>
   );
 }
+
