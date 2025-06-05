@@ -19,7 +19,7 @@ export default function HomePage() {
         <div className="relative flex-grow flex flex-col p-4 md:p-8">
 
           {/* Main Content Area: Arranges Left Stack (Label + Logo) and Right (Mobile) */}
-          <div className="flex-grow flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24">
+          <div className="flex-grow flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24 md:px-12">
 
             {/* Left Stack: Label over Logo */}
             <div className="flex flex-col items-center md:items-start space-y-4 md:space-y-8 mb-8 md:mb-0">
