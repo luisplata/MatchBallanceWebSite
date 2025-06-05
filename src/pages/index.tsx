@@ -22,7 +22,7 @@ export default function HomePage() {
           <div className="flex-grow flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24 md:px-12">
 
             {/* Left Stack: Label over Logo */}
-            <div className="flex flex-col items-center md:items-start space-y-4 md:space-y-8 mb-8 md:mb-0">
+            <div className="flex flex-col items-center md:items-start space-y-4 md:space-y-8 mb-8 md:mb-0 md:w-3/5">
               <div className="transform transition-transform hover:scale-105">
                 <Image
                   src="/images/Label.png" 
@@ -46,7 +46,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Column: Phone Mockup */}
-            <div className="w-4/5 sm:w-3/5 md:w-auto flex justify-center md:justify-end ml-0 md:ml-8 lg:ml-12 transform transition-transform hover:scale-105">
+            <div className="w-4/5 sm:w-3/5 md:w-2/5 flex justify-center md:justify-end ml-0 md:ml-8 lg:ml-12 transform transition-transform hover:scale-105">
               <Image
                 src="/images/Movile.jpg" 
                 alt="Game on Phone Screen"
@@ -67,3 +67,4 @@ export default function HomePage() {
     </>
   );
 }
+
