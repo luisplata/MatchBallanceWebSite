@@ -27,8 +27,8 @@ export default function HomePage() {
                 <Image
                   src="/images/Label.png" 
                   alt="MatchBallance Studios"
-                  width={800} 
-                  height={200}  
+                  width={270} 
+                  height={68}  
                   data-ai-hint="studio logo banner"
                   priority 
                 />
