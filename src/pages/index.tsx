@@ -15,37 +15,38 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/images/MainBG.png')" }}
         data-ai-hint="game promotional background"
       >
-        {/* Container for positioning elements */}
+        {/* Container for positioning elements and overall padding */}
         <div className="relative flex-grow flex flex-col p-4 md:p-8">
 
-          {/* Top Left: Studio Label */}
-          <div className="absolute top-8 left-4 md:top-12 md:left-8 z-10">
-            <Image
-              src="/images/Label.png" 
-              alt="MatchBallance Studios"
-              width={800} 
-              height={200}  
-              data-ai-hint="studio logo banner"
-              priority 
-            />
-          </div>
+          {/* Main Content Area: Arranges Left Stack (Label + Logo) and Right (Mobile) */}
+          <div className="flex-grow flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24">
 
-          {/* Main Content Area: Game Logo and Phone */}
-          <div className="flex-grow flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl mx-auto pt-16 md:pt-24 pb-24 md:pb-32">
-            {/* Left/Top on mobile: Game Logo */}
-            <div className="w-full md:w-3/5 lg:w-1/2 flex justify-center md:justify-start mb-8 md:mb-0 transform transition-transform hover:scale-105">
-              <Image
-                src="/images/LogoHero.png" 
-                alt="Match Ballance The Game"
-                width={480} 
-                height={270} 
-                data-ai-hint="game title logo"
-                priority
-              />
+            {/* Left Stack: Label over Logo */}
+            <div className="flex flex-col items-center md:items-start space-y-4 md:space-y-8 mb-8 md:mb-0">
+              <div className="transform transition-transform hover:scale-105">
+                <Image
+                  src="/images/Label.png" 
+                  alt="MatchBallance Studios"
+                  width={800} 
+                  height={200}  
+                  data-ai-hint="studio logo banner"
+                  priority 
+                />
+              </div>
+              <div className="transform transition-transform hover:scale-105">
+                <Image
+                  src="/images/LogoHero.png" 
+                  alt="Match Ballance The Game"
+                  width={480} 
+                  height={270} 
+                  data-ai-hint="game title logo"
+                  priority
+                />
+              </div>
             </div>
 
-            {/* Right/Bottom on mobile: Phone Mockup */}
-            <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 flex justify-center md:justify-end transform transition-transform hover:scale-105">
+            {/* Right Column: Phone Mockup */}
+            <div className="w-4/5 sm:w-3/5 md:w-auto flex justify-center md:justify-end ml-0 md:ml-8 lg:ml-12 transform transition-transform hover:scale-105">
               <Image
                 src="/images/Movile.jpg" 
                 alt="Game on Phone Screen"
@@ -66,4 +67,3 @@ export default function HomePage() {
     </>
   );
 }
-
