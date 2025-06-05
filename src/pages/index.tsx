@@ -19,12 +19,12 @@ export default function HomePage() {
         <div className="relative flex-grow flex flex-col p-4 md:p-8">
 
           {/* Main Content Area: Arranges Left Stack (Label + Logo) and Right (Mobile) */}
-          <div className="flex-grow flex flex-col md:flex-row items-center md:items-stretch justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24 md:px-12">
+          <div className="flex-grow flex flex-col md:flex-row items-center md:items-stretch justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24">
 
             {/* Left Stack: Label over Logo */}
-            <div className="flex flex-col md:items-center md:space-y-8 md:w-3/5 w-full">
+            <div className="flex flex-col items-center md:items-center md:space-y-8 md:w-3/5 w-full">
               {/* Label Container */}
-              <div className="w-full md:-ml-[50%]">
+              <div className="w-full transform transition-transform -ml-[50%]">
                 <Image
                   src="/images/Label.png"
                   alt="MatchBallance Studios"
@@ -36,7 +36,7 @@ export default function HomePage() {
                 />
               </div>
               {/* Logo Container */}
-              <div className="transform transition-transform hover:scale-105 w-full md:flex md:flex-grow md:items-center md:justify-center">
+              <div className="w-full transform transition-transform hover:scale-105 md:flex md:flex-grow md:items-center md:justify-center">
                 <Image
                   src="/images/LogoHero.png"
                   alt="Match Ballance The Game"
