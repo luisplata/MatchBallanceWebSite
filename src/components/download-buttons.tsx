@@ -19,11 +19,11 @@ export default function DownloadButtons() {
       {/* App Store Button Image */}
       <button
         onClick={handleAppStoreClick}
-        className="transform transition-transform hover:scale-105 focus:outline-none"
+        className="inline-flex items-center justify-center transform transition-transform hover:scale-105 focus:outline-none"
         aria-label="Descargar en App Store (Próximamente)"
       >
         <Image
-          src="images/appstore.png" 
+          src="/images/appstore.png" 
           alt="Descargar en App Store"
           width={240} 
           height={72}
@@ -38,10 +38,10 @@ export default function DownloadButtons() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Disponible en Google Play"
-        className="transform transition-transform hover:scale-105"
+        className="inline-flex items-center justify-center transform transition-transform hover:scale-105"
       >
         <Image
-          src="images/playstore.png" 
+          src="/images/playstore.png" 
           alt="Disponible en Google Play"
           width={240}
           height={72}
