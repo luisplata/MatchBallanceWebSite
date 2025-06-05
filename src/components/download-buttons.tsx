@@ -23,7 +23,7 @@ export default function DownloadButtons() {
         aria-label="Descargar en App Store (Próximamente)"
       >
         <Image
-          src="https://placehold.co/240x72.png" 
+          src="images/appstore.png" 
           alt="Descargar en App Store"
           width={240} 
           height={72}
@@ -41,7 +41,7 @@ export default function DownloadButtons() {
         className="transform transition-transform hover:scale-105"
       >
         <Image
-          src="https://placehold.co/240x72.png" 
+          src="images/playstore.png" 
           alt="Disponible en Google Play"
           width={240}
           height={72}
