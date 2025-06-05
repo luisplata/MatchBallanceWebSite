@@ -23,7 +23,7 @@ export default function HomePage() {
 
             {/* Left Stack: Label over Logo */}
             <div className="flex flex-col items-center md:justify-center md:items-center space-y-4 md:space-y-8 mb-8 md:mb-0 md:w-3/5 border border-dashed border-red-500">
-              <div className="transform transition-transform hover:scale-105 w-full">
+              <div className="transform transition-transform hover:scale-105 w-full border border-dashed border-blue-500">
                 <Image
                   src="/images/Label.png"
                   alt="MatchBallance Studios"
@@ -34,7 +34,7 @@ export default function HomePage() {
                   priority
                 />
               </div>
-              <div className="transform transition-transform hover:scale-105 w-full">
+              <div className="transform transition-transform hover:scale-105 w-full border border-dashed border-blue-500">
                 <Image
                   src="/images/LogoHero.png"
                   alt="Match Ballance The Game"
@@ -69,4 +69,3 @@ export default function HomePage() {
     </>
   );
 }
-
