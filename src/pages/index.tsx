@@ -22,9 +22,9 @@ export default function HomePage() {
           <div className="flex-grow flex flex-col md:flex-row items-center md:items-stretch justify-center md:justify-between w-full max-w-screen-xl mx-auto pt-8 md:pt-12 pb-20 md:pb-24 md:px-12">
 
             {/* Left Stack: Label over Logo */}
-            <div className="flex flex-col items-center space-y-4 md:space-y-8 md:w-3/5 border border-dashed border-red-500">
+            <div className="flex flex-col items-center md:items-start space-y-4 md:space-y-8 md:w-3/5 border border-dashed border-red-500">
               {/* Label Container */}
-              <div className="transform transition-transform hover:scale-105 w-full border border-dashed border-blue-500">
+              <div className="transform transition-transform hover:scale-105 w-full md:-ml-[50%] border border-dashed border-blue-500">
                 <Image
                   src="/images/Label.png"
                   alt="MatchBallance Studios"
@@ -50,7 +50,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Column: Phone Mockup */}
-            <div className="md:w-2/5 flex justify-center md:justify-center border border-dashed border-red-500">
+            <div className="md:w-2/5 flex justify-center border border-dashed border-red-500">
               <Image
                 src="/images/Movile.jpg"
                 alt="Game on Phone Screen"
