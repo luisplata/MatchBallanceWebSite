@@ -11,7 +11,7 @@ export default function HomePage() {
       </Head>
       <div
         className="relative min-h-screen w-full flex flex-col items-stretch justify-stretch bg-cover bg-center bg-no-repeat text-white overflow-hidden"
-        style={{ backgroundImage: "url('https://storage.googleapis.com/altarr_nextjs_app_images/6bb4b9c3-f10a-4a43-9368-5b12b8c56711.png')" }}
+        style={{ backgroundImage: "url('/images/MainBG.png')" }}
         data-ai-hint="game promotional background"
       >
         {/* Container for positioning elements */}
@@ -57,7 +57,7 @@ export default function HomePage() {
           </div>
 
           {/* Bottom Area: Download Buttons */}
-          <div className="absolute bottom-4 md:bottom-8 left-4 right-4 sm:left-auto sm:right-auto sm:w-full sm:max-w-sm md:max-w-md mx-auto z-10">
+          <div className="absolute bottom-4 md:bottom-8 inset-x-0 mx-auto max-w-xs sm:max-w-sm md:max-w-md z-10">
             <DownloadButtons />
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function DownloadButtons() {
   };
 
   return (
-    <div className="flex w-full items-start justify-center gap-x-2 px-1 sm:gap-x-4 sm:px-0">
+    <div className="flex flex-row w-full items-center justify-center gap-x-2 px-1 sm:gap-x-4 sm:px-0">
       {/* App Store Button Wrapper */}
       <div className="w-1/2 max-w-[180px] sm:w-[200px] sm:max-w-none">
         <button
