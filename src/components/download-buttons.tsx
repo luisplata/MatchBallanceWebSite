@@ -1,8 +1,7 @@
 
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Apple, Play } from 'lucide-react';
+import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 
 export default function DownloadButtons() {
@@ -17,34 +16,39 @@ export default function DownloadButtons() {
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-      <Button
-        size="lg"
-        className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform transition-transform hover:scale-105 animate-subtle-bounce"
-        style={{animationDelay: '0s'}}
+      {/* App Store Button Image */}
+      <button
         onClick={handleAppStoreClick}
-        aria-label="Próximamente en App Store"
+        className="transform transition-transform hover:scale-105 focus:outline-none"
+        aria-label="Descargar en App Store (Próximamente)"
       >
-        <Apple className="mr-3 h-7 w-7" />
-        <div className="text-left">
-          <p className="text-xs">Descargar en</p>
-          <p className="text-xl font-semibold">App Store</p>
-        </div>
-      </Button>
-      <Button
-        asChild
-        size="lg"
-        className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform transition-transform hover:scale-105 animate-subtle-bounce"
-        style={{animationDelay: '0.2s'}}
+        <Image
+          src="https://placehold.co/240x72.png" 
+          alt="Descargar en App Store"
+          width={240} 
+          height={72}
+          className="object-contain"
+          data-ai-hint="app store badge"
+        />
+      </button>
+
+      {/* Google Play Button Image */}
+      <a
+        href="https://play.google.com/store/apps/dev?id=6489594376691621400"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Disponible en Google Play"
+        className="transform transition-transform hover:scale-105"
       >
-        <a href="https://play.google.com/store/apps/dev?id=6489594376691621400" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play">
-          <Play className="mr-3 h-7 w-7" />
-           <div className="text-left">
-            <p className="text-xs">Disponible en</p>
-            <p className="text-xl font-semibold">Google Play</p>
-          </div>
-        </a>
-      </Button>
+        <Image
+          src="https://placehold.co/240x72.png" 
+          alt="Disponible en Google Play"
+          width={240}
+          height={72}
+          className="object-contain"
+          data-ai-hint="google play badge"
+        />
+      </a>
     </div>
   );
 }
-

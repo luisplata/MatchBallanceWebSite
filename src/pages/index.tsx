@@ -20,7 +20,7 @@ export default function HomePage() {
           {/* Top Left: Studio Label */}
           <div className="absolute top-4 left-4 md:top-8 md:left-8 z-10">
             <Image
-              src="https://placehold.co/280x50.png?text=MATCHBALLANCE+Studios"
+              src="images/Label.png"
               alt="MatchBallance Studios"
               width={280}
               height={50}
@@ -34,8 +34,8 @@ export default function HomePage() {
             {/* Left/Top on mobile: Game Logo */}
             <div className="w-full md:w-3/5 lg:w-1/2 flex justify-center md:justify-start mb-8 md:mb-0 transform transition-transform hover:scale-105">
               <Image
-                src="https://placehold.co/480x270.png?text=MATCH+BALLANCE+THE+GAME"
-                alt="Match Ballance Game Logo"
+                src="images/LogoHero.png"
+                alt="Match Ballance The Game"
                 width={480}
                 height={270}
                 data-ai-hint="game title logo"
@@ -46,7 +46,7 @@ export default function HomePage() {
             {/* Right/Bottom on mobile: Phone Mockup */}
             <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 flex justify-center md:justify-end transform transition-transform hover:scale-105">
               <Image
-                src="https://placehold.co/270x550.png"
+                src="images/Movile.jpg"
                 alt="Game on Phone Screen"
                 width={270}
                 height={550}
