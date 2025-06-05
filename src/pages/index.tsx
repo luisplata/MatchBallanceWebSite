@@ -1,3 +1,4 @@
+
 import Head from 'next/head';
 import Image from 'next/image';
 import DownloadButtons from '@/components/download-buttons';
@@ -22,8 +23,8 @@ export default function HomePage() {
             <Image
               src="/images/Label.png" 
               alt="MatchBallance Studios"
-              width={400} 
-              height={100}  
+              width={800} 
+              height={200}  
               data-ai-hint="studio logo banner"
               priority 
             />
