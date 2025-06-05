@@ -20,24 +20,24 @@ export default function HomePage() {
           {/* Top Left: Studio Label */}
           <div className="absolute top-4 left-4 md:top-8 md:left-8 z-10">
             <Image
-              src="/images/Label.png" // Placeholder - replace with actual path if different
+              src="/images/Label.png" 
               alt="MatchBallance Studios"
-              width={280} // Adjust as needed
-              height={50}  // Adjust as needed
+              width={280} 
+              height={50}  
               data-ai-hint="studio logo banner"
-              priority // Keep priority if it's above the fold and important
+              priority 
             />
           </div>
 
           {/* Main Content Area: Game Logo and Phone */}
-          <div className="flex-grow flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl mx-auto pt-16 md:pt-24 pb-24 md:pb-32"> {/* Increased top/bottom padding */}
+          <div className="flex-grow flex flex-col md:flex-row items-center justify-center md:justify-between w-full max-w-6xl mx-auto pt-16 md:pt-24 pb-24 md:pb-32">
             {/* Left/Top on mobile: Game Logo */}
             <div className="w-full md:w-3/5 lg:w-1/2 flex justify-center md:justify-start mb-8 md:mb-0 transform transition-transform hover:scale-105">
               <Image
-                src="/images/LogoHero.png" // Placeholder - replace with actual path if different
+                src="/images/LogoHero.png" 
                 alt="Match Ballance The Game"
-                width={480} // Adjust as needed
-                height={270} // Adjust as needed
+                width={480} 
+                height={270} 
                 data-ai-hint="game title logo"
                 priority
               />
@@ -46,10 +46,10 @@ export default function HomePage() {
             {/* Right/Bottom on mobile: Phone Mockup */}
             <div className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/3 flex justify-center md:justify-end transform transition-transform hover:scale-105">
               <Image
-                src="/images/Movile.jpg" // Placeholder - replace with actual path if different
+                src="/images/Movile.jpg" 
                 alt="Game on Phone Screen"
-                width={270} // Adjust as needed
-                height={550} // Adjust as needed
+                width={270} 
+                height={550} 
                 data-ai-hint="phone mockup gameplay"
                 className="object-contain"
               />
@@ -57,8 +57,7 @@ export default function HomePage() {
           </div>
 
           {/* Bottom Area: Download Buttons */}
-          {/* Centered horizontally at the bottom */}
-          <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="absolute bottom-4 md:bottom-8 left-4 right-4 sm:left-auto sm:right-auto sm:w-full sm:max-w-sm md:max-w-md mx-auto z-10">
             <DownloadButtons />
           </div>
         </div>
