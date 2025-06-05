@@ -15,7 +15,7 @@ export default function DownloadButtons() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+    <div className="flex flex-row items-center justify-center gap-4 sm:gap-6"> {/* Changed flex-col to flex-row and adjusted gap for mobile */}
       {/* App Store Button Image */}
       <button
         onClick={handleAppStoreClick}
@@ -25,8 +25,8 @@ export default function DownloadButtons() {
         <Image
           src="/images/appstore.png" 
           alt="Descargar en App Store"
-          width={240} 
-          height={72}
+          width={200} // Slightly reduced width for better fit on mobile
+          height={60}  // Adjusted height to maintain aspect ratio
           className="object-contain"
           data-ai-hint="app store badge"
         />
@@ -43,8 +43,8 @@ export default function DownloadButtons() {
         <Image
           src="/images/playstore.png" 
           alt="Disponible en Google Play"
-          width={240}
-          height={72}
+          width={200} // Slightly reduced width for better fit on mobile
+          height={60}  // Adjusted height to maintain aspect ratio
           className="object-contain"
           data-ai-hint="google play badge"
         />
