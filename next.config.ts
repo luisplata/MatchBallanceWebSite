@@ -31,6 +31,15 @@ const nextConfig = {
 
   // Removed i18n configuration as it's incompatible with 'output: export'
   // i18n: { ... }
+
+  // Configure allowed origins for development to prevent cross-origin request errors
+  // in environments like Firebase Studio's Cloud Workstation.
+  devIndicators: {
+    allowedDevOrigins: [
+      '9000-firebase-studio-1748985871513.cluster-hf4yr35cmnbd4vhbxvfvc6cp5q.cloudworkstations.dev',
+      // You can add other development origins here if needed
+    ],
+  },
 };
 
 module.exports = nextConfig;
