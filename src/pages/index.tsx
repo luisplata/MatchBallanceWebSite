@@ -5,6 +5,7 @@ import DownloadButtons from '@/components/download-buttons';
 
 export default function HomePage() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  console.log('NEXT_PUBLIC_BASE_PATH:', basePath); // Added for validation
 
   return (
     <>
@@ -24,9 +25,9 @@ export default function HomePage() {
           <div className="flex-grow flex flex-col md:flex-row items-center md:items-stretch justify-center md:justify-between w-full max-w-screen-xl mx-auto md:pt-12 pb-20 md:pb-24 md:px-12">
 
             {/* Left Stack: Label over Logo */}
-            <div className="-ml-[50%] md:space-y-8 space-y-4 md:w-3/5 w-full mb-8 md:mb-0 flex flex-col">
+            <div className="md:w-3/5 w-full flex flex-col items-center space-y-4 md:space-y-8 mb-8 md:mb-0">
               {/* Label Container */}
-              <div className="w-full transform transition-transform">
+              <div className="w-full transform md:-ml-[50%]"> {/* Reverted to md:-ml-[50%] */}
                 <Image
                   src="/images/Label.png"
                   alt="MatchBallance Studios"
