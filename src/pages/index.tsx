@@ -4,6 +4,8 @@ import Image from 'next/image';
 import DownloadButtons from '@/components/download-buttons';
 
 export default function HomePage() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
   return (
     <>
       <Head>
@@ -12,7 +14,7 @@ export default function HomePage() {
       </Head>
       <div
         className="relative min-h-screen w-full flex flex-col items-stretch justify-stretch bg-cover bg-center bg-no-repeat text-white overflow-hidden"
-        style={{ backgroundImage: "url('/images/MainBG.png')" }}
+        style={{ backgroundImage: `url(${basePath}/images/MainBG.png)` }}
         data-ai-hint="game promotional background"
       >
         {/* Container for positioning elements and overall padding */}
@@ -22,9 +24,9 @@ export default function HomePage() {
           <div className="flex-grow flex flex-col md:flex-row items-center md:items-stretch justify-center md:justify-between w-full max-w-screen-xl mx-auto md:pt-12 pb-20 md:pb-24 md:px-12">
 
             {/* Left Stack: Label over Logo */}
-            <div className="flex flex-col items-center space-y-4 md:space-y-8 md:w-3/5 w-full mb-8 md:mb-0">
+            <div className="-ml-[50%] md:space-y-8 space-y-4 md:w-3/5 w-full mb-8 md:mb-0 flex flex-col">
               {/* Label Container */}
-              <div className="w-full -ml-[50%] transform transition-transform">
+              <div className="w-full transform transition-transform">
                 <Image
                   src="/images/Label.png"
                   alt="MatchBallance Studios"
